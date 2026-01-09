@@ -35,8 +35,8 @@ keycloak:
     client-secret: "$CLIENT_SECRET"
 
 # --- injected routing/db settings ---
-server:
-  port: 10011
+#server:
+#  port: 10051
 
 #springdoc:
 #  api-docs:
