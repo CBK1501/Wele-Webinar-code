@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: 'mongodb://localhost:27017/wele_learning'
+      uri: 'mongodb+srv://wele_dev_rw:wedevrw%230487@welecluster01.rcdcycc.mongodb.net/weledb_dev'
 
   security:
     oauth2:
