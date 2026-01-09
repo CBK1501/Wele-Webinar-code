@@ -1,0 +1,48 @@
+spring:
+  data:
+    mongodb:
+      uri: 'mongodb://wele_root:StrongPassword123!@mongo.wele-dev.svc.cluster.local:27017/wele_learning?authSource=admin'
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak.wele-dev.svc.cluster.local:8080/realms/wele-realm/protocol/openid-connect/certs
+
+casbin:
+  model: classpath:casbin_model.conf
+
+time:
+  service:
+    url: http://time-service.wele-dev.svc.cluster.local:10024
+
+log:
+  service:
+    url: http://time-service.wele-dev.svc.cluster.local:10023
+
+# Decryption key for encrypted passwords is read from env var APP_ENCRYPTION_KEY (Base64 32 bytes)
+
+# Optional: Enable server-side introspection (in addition to JWT validation)
+keycloak:
+  introspection:
+    enabled: false
+    client-id: wele-gateway
+    client-secret: "$CLIENT_SECRET"
+
+# --- injected routing/db settings ---
+server:
+  port: 10019
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

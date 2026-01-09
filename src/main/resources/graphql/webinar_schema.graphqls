@@ -1,0 +1,49 @@
+type Webinar {
+    id : ID
+    webinarCode : String
+    title : String
+    subtitle : String
+    description : String
+    level : String
+    durationMinutes : String
+#    startDateTime : LocalDateTime
+#    endDateTime :
+    timezone : String
+    isLiveNow : Boolean
+#    thumbnailImageUrl;
+    primarySpeaker : ID
+    secondarySpeakers  : [ID]
+    categories : [String]
+    tags : [String]
+    meetingLink : String
+#    recordingUrl : String
+    registrationRequired : Boolean
+#    registrationOpenDate :
+#    registrationCloseDate :
+    maxRegistrations : String
+#    registeredUsers : [ID]
+    totalAttendees : String
+#    cancelReason : String
+#    viewsCount : String
+#    likesCount : String
+    isActive : Boolean
+}
+
+type ResponseTransferWebinar {
+    resCode: Int
+    body: Webinar
+    remarks: String
+}
+
+type ResponseTransferWebinarList {
+    resCode: Int
+    body: [Webinar]
+    remarks: String
+}
+
+extend type  Query {
+    getWebinarById(id : ID!) : ResponseTransferWebinar
+    getAllWebinars : ResponseTransferWebinarList
+    getWebinarsByCategory(categories: [String!]!): ResponseTransferWebinarList
+
+}

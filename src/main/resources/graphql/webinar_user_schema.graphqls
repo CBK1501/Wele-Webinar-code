@@ -1,0 +1,25 @@
+type WebinarUser {
+    id : ID
+    name : String
+    email : String
+    webinarId : String
+    isActive : Boolean
+
+}
+
+type ResponseTransferWebinarUser {
+    resCode: Int
+    body: WebinarUser
+    remarks: String
+}
+
+type ResponseTransferWebinarUserList {
+    resCode: Int
+    body: [WebinarUser]
+    remarks: String
+}
+
+extend type Query {
+    getWebinarUserById(id : ID!) : ResponseTransferWebinarUser
+    getAllWebinarUser: ResponseTransferWebinarUserList
+}

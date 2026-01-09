@@ -1,0 +1,26 @@
+type Speaker {
+    id : ID
+    name : String
+    designation : String
+    company : String
+    profileImage : String
+    webinarId : String
+    isActive : Boolean
+}
+
+type ResponseTransferSpeaker {
+    resCode: Int
+    body: Speaker
+    remarks: String
+}
+
+type ResponseTransferSpeakerList {
+    resCode: Int
+    body: [Speaker]
+    remarks: String
+}
+
+type Query {
+    getSpeakerById(id : ID!) : ResponseTransferSpeaker
+    getAllSpeakers : ResponseTransferSpeakerList
+}

@@ -1,0 +1,53 @@
+spring:
+  data:
+    mongodb:
+      uri: 'mongodb://localhost:27017/wele_learning'
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "https://9ffe9001d499.ngrok-free.app /realms/wele-realm/protocol/openid-connect/certs"
+
+  graphql:
+    path: /api/v7/webinarmodule
+    graphiql:
+      enabled: true
+
+casbin:
+  model: classpath:casbin_model.conf
+
+time:
+  service:
+    url: http://localhost:10024
+
+log:
+  service:
+    url: http://localhost:10023
+
+# Decryption key for encrypted passwords is read from env var APP_ENCRYPTION_KEY (Base64 32 bytes)
+
+# Optional: Enable server-side introspection (in addition to JWT validation)
+keycloak:
+  introspection:
+    enabled: false
+    client-id: wele-gateway
+    client-secret: "$CLIENT_SECRET"
+
+# --- injected routing/db settings ---
+server:
+  port: 10011
+
+#springdoc:
+#  api-docs:
+#    enabled: true
+#    path: /v3/api-docs
+#  swagger-ui:
+#    enabled: true
+#    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
